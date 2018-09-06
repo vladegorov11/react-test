@@ -34,6 +34,6 @@ class ArticlesHome extends Component {
 } 
 
 function mapStateToProps(state) {
-	return {articles: state.articles.all}
+	return {articles: state.articles.articles}
 }
 export default connect(mapStateToProps, {getArticles: getArticles})(ArticlesHome);
