@@ -1,11 +1,11 @@
 import {combineReducers} from 'redux';
 import ArticlesReducer from './articles_reducer';
-import UserReducer from './user_reducer';
+import CategoryReducer from './category_reducer';
 import {reducer as formReducer} from 'redux-form';
 
 const allReducers = combineReducers({
 	articles:  ArticlesReducer,
-	user: UserReducer,
+	category: CategoryReducer,
 	form: formReducer
 });
 

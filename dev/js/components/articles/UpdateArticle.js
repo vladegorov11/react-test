@@ -1,6 +1,6 @@
 import React , {Component, PropTypes} from 'react';
 import {reduxForm} from 'redux-form';
-import {updateArticle, getArticle} from '../actions/index';
+import {updateArticle, getArticle} from '../../actions/index';
 
 class UpdateArticle extends Component {
 
@@ -18,8 +18,8 @@ class UpdateArticle extends Component {
 	}
 
 	render(){
-		console.log('asfasfafasf',this.props.article);
-		const {fields: {title}, handleSubmit} = this.props;
+
+		const {fields: {title, body}, handleSubmit} = this.props;
 		if(!this.props.article) {
 			return <div> Getting article, please wait</div>;
 		}
@@ -31,8 +31,12 @@ class UpdateArticle extends Component {
 						<label>Title</label>
 						<input type='text' className='form-control' {...title} defaultValue={this.props.article.title}/>
 					</div>
+					<div>
+						<label>body</label>
+						<input type='text' className='form-control' {...body} defaultValue={this.props.article.body}/>
+					</div>
 					<button type='submit' className='btn btn-success'>Create</button>
-				</form> 
+				</form>
 			</div>
 		);
 	}
@@ -44,5 +48,5 @@ function mapStateToProps(state) {
 
 export default reduxForm({
 	form: 'UpdateArticleForm',
-	fields: ['title']
+	fields: ['title', 'body']
 }, mapStateToProps,{updateArticle, getArticle})(UpdateArticle);

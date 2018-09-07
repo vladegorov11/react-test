@@ -1,6 +1,6 @@
 import React , {Component, PropTypes} from 'react';
 import {reduxForm} from 'redux-form';
-import {createArticle} from '../actions/index';
+import {createArticle} from '../../actions/index';
 
 class NewArticle extends Component {
 
@@ -14,7 +14,7 @@ class NewArticle extends Component {
 	}
 
 	render(){
-		const {fields: {title}, handleSubmit} = this.props;
+		const {fields: {title, body}, handleSubmit} = this.props;
 		return (
 			<div className='container'>
 				<h3> Create a new Article  </h3>
@@ -23,8 +23,12 @@ class NewArticle extends Component {
 						<label>Title</label>
 						<input type='text' className='form-control' {...title}/>
 					</div>
+					<div>
+						<label>body</label>
+						<input type='text' className='form-control' {...body}/>
+					</div>
 					<button type='submit' className='btn btn-success'>Create</button>
-				</form> 
+				</form>
 			</div>
 		);
 	}
@@ -32,5 +36,5 @@ class NewArticle extends Component {
 
 export default reduxForm({
 	form: 'NewArticleForm',
-	fields: ['title']
+	fields: ['title', 'body']
 }, null,{createArticle})(NewArticle);

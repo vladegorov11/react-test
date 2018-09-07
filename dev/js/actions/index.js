@@ -1,15 +1,15 @@
 
-import {GET_ARTICLES, GET_ARTICLE, CREATE_ARTICLE, DELETE_ARTICLE, UPDATE_ARTICLE} from './types';
+import {GET_CATEGORY, GET_ARTICLES, GET_ARTICLE, CREATE_ARTICLE, DELETE_ARTICLE, UPDATE_ARTICLE} from './types';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/v1';
+const API_URL = 'http://localhost:5000/api';
 
 export function getArticles() {
 	const request = axios.get(`${API_URL}/articles`);
 
 	return {
 		type: GET_ARTICLES,
-		payload: request 
+		payload: request
 	};
 }
 
@@ -18,7 +18,7 @@ export function createArticle(props) {
 
 	return {
 		type: CREATE_ARTICLE,
-		payload: request 
+		payload: request
 	};
 }
 export function deleteArticle(id) {
@@ -26,7 +26,7 @@ export function deleteArticle(id) {
 
 	return {
 		type: DELETE_ARTICLE,
-		payload: request 
+		payload: request
 	};
 }
 
@@ -35,7 +35,7 @@ export function getArticle(id) {
 
 	return {
 		type: GET_ARTICLE,
-		payload: request 
+		payload: request
 	};
 }
 
@@ -44,7 +44,16 @@ export function updateArticle(id, props) {
 
 	return {
 		type: UPDATE_ARTICLE,
-		payload: request 
+		payload: request
 	};
 }
 
+export function getCategory() {
+
+	const request = axios.get(`${API_URL}/categories`);
+
+	return {
+		type: GET_CATEGORY,
+		payload: request
+	}
+}

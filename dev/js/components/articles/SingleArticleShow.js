@@ -1,6 +1,6 @@
 import React , {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {getArticle, deleteArticle} from '../actions/index';
+import {getArticle, deleteArticle} from '../../actions/index';
 import {Link} from 'react-router';
 
 class SingleArticleShow extends Component {
@@ -17,14 +17,16 @@ class SingleArticleShow extends Component {
 			});
 	}
 	render() {
+		const article = this.props.article;
 		if(!this.props.article) {
 			return <div> Getting article, please wait</div>;
 		}
 		return (
-			<div  className="container"> 
-				<h3>Title {this.props.article.title}</h3>
+			<div  className="container">
+				<h3>Title {article.title}</h3>
+				<p>Body {article.body}</p>
 				<button className="btn btn-warning" onClick={this.deleteButtonClick.bind(this)}>delete </button>
-				<Link className="btn btn-info" to={"articles/" + this.props.article.id + "/edit"}>update article</Link>
+				<Link className="btn btn-info" to={"articles/" + article.id + "/edit"}>update article</Link>
 			</div>
 		)
 	}
